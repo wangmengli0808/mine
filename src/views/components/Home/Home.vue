@@ -1,5 +1,5 @@
 <template>
-    <div class="home">
+    <div class="home container">
         <div class="home-header">
             <div class="logo">
                 <a href="javascript:;">个人博客</a>
@@ -81,10 +81,6 @@
 
 <style lang="scss">
     .home {
-        width: 96%;
-        height: 100%;
-        margin: auto;
-        max-width: 100rem;
         &-header {
 
         }

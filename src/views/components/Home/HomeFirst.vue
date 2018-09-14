@@ -42,12 +42,12 @@
                             </el-col>
                             <el-col :span="24">
                                 <div class="grid-content">
-                                    <a href="javascript:;">学无止境</a>
+                                    <a href="javascript:;">日志</a>
                                 </div>
                             </el-col>
                             <el-col :span="24">
                                 <div class="grid-content">
-                                    <a href="javascript:;">学无止境</a>
+                                    <a href="javascript:;">美文欣赏</a>
                                 </div>
                             </el-col>
                         </el-row>

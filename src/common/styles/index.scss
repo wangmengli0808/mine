@@ -80,6 +80,13 @@ body {
   -moz-box-orient: vertical;
 }
 
+.container {
+  width: 96%;
+  height: 100%;
+  margin: auto;
+  max-width: 100rem;
+}
+
 .intro .text {
   display: inline-block;
   color: #fff;
