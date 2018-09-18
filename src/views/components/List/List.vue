@@ -1,6 +1,6 @@
 <template>
-    <div class="list">
-        <Header></Header>
+    <div class="list" ref="viewBox">
+        <header-nav></header-nav>
         <div class="list-main container">
             <el-row :gutter="20">
                 <el-col :sm="16">
@@ -152,16 +152,19 @@
 </template>
 
 <script>
-  import Header from '../common/Header';
+  import HeaderNav from '../common/Header';
 
   export default {
     components: {
-      Header
+      HeaderNav
     },
     data() {
       return {
         input: ''
       }
+    },
+    mounted() {
+
     },
     methods: {
 

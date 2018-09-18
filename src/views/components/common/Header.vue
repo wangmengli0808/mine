@@ -1,6 +1,6 @@
 <template>
     <div class="header-box">
-        <div class="header" :class="{visible: true}">
+        <div class="header" :class="{visible: is_visible}">
             <div class="container">
                 <a href="" class="logo">
                     <!--<img src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" alt="">-->
@@ -22,20 +22,48 @@
     data() {
       return {
         input: '',
-        visible: true
+        is_visible: true,
+        scrollAction: null,
+        originalDir: null
+      }
+    },
+    props: {
+      visible: {
+        type: Boolean,
+        default: false
       }
     },
     mounted() {
-      window.addEventListener('scroll', this.scroll)
+      window.addEventListener('scroll', this.handleScroll)
     },
     methods: {
-      scroll() {
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        if (scrollTop > 100) {
-          this.visible = false
-        } else {
-          this.visible = true
+      handleScroll () {
+        // var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        // console.log(scrollTop);
+        // if (scrollTop > 0) {}
+        var direction = this.scrollFunc();
+        if(direction && this.originalDir !== direction){
+          if (direction === 'down') {
+            this.is_visible = false;
+          } else {
+            this.is_visible = true;
+          }
+          this.originalDir = direction;
         }
+      },
+      scrollFunc() {
+        var scrollDirection;
+        if (!this.scrollAction) {
+          this.scrollAction = window.pageYOffset;
+        }
+        var diff = this.scrollAction - window.pageYOffset;
+        if (diff < 0) {
+          scrollDirection = 'down';
+        } else {
+          scrollDirection = 'up';
+        }
+        this.scrollAction = window.pageYOffset;
+        return scrollDirection;
       }
     }
   }
@@ -57,10 +85,11 @@
         left: 0;
         right: 0;
         z-index: 250;
-        transition: all .2s;
+        transition: all .5s;
         -webkit-transform: translate3d(0,-100%,0);
         transform: translate3d(0,-100%,0);
         &.visible {
+            background: rgba(255, 255, 255, .9);
             -webkit-transform: translateZ(0);
             transform: translateZ(0);
         }
