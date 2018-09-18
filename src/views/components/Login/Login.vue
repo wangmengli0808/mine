@@ -8,7 +8,9 @@
             </div>
             <small class="wang">MISS WANG</small>
             <div class="go">
-                <el-button type="danger">GO AHEAD</el-button>
+                <router-link to="/home">
+                    <el-button type="danger">GO AHEAD</el-button>
+                </router-link>
             </div>
         </div>
         <!--<div>-->
