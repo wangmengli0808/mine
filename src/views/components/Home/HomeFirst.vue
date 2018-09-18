@@ -36,7 +36,7 @@
                         <h3>文章分类</h3>
                         <el-row :gutter="10" class="con-box article-list">
                             <el-col :span="24">
-                                <div class="grid-content">
+                                <div class="grid-content" @click="toList">
                                     <a href="javascript:;">学无止境</a>
                                 </div>
                             </el-col>
@@ -106,7 +106,8 @@
         total: 0,
         data: [],
         articles: [],
-        currentData: []
+        currentData: [],
+        currentTypes: []
       }
     },
     mounted() {
@@ -234,6 +235,11 @@
             clearInterval(timer)
           }
         },30)
+      },
+      toList() {
+        this.$router.push({
+          path: '/list'
+        })
       }
     },
     computed: {

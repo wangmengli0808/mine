@@ -2,7 +2,7 @@
     <div class="home container">
         <div class="home-header">
             <div class="logo">
-                <a href="javascript:;">个人博客222</a>
+                <a href="javascript:;">个人博客</a>
                 <div class="color-picker">
                     <el-color-picker v-model="color" @change="change()"></el-color-picker>
                 </div>
