@@ -2,14 +2,16 @@
     <div class="header-box">
         <div class="header" :class="{visible: is_visible}">
             <div class="container">
-                <a href="" class="logo">
-                    <!--<img src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" alt="">-->
-                    个人博客
-                </a>
+                <router-link to="/home">
+                    <a href="javascript:;" class="logo">
+                        <!--<img src="https://b-gold-cdn.xitu.io/v3/static/img/logo.a7995ad.svg" alt="">-->
+                        个人博客
+                    </a>
+                </router-link>
                 <div class="nav-list">
                     <ul class="nav-list-ul">
-                        <li class="nav-item"><a href="">主页</a></li>
-                        <li class="nav-item"><a href="">我的相册</a></li>
+                        <li class="nav-item"><router-link to="/home"><a href="javascript:;">主页</a></router-link></li>
+                        <li class="nav-item"><router-link to="/home-second"><a href="javascript:;">我的相册</a></router-link></li>
                     </ul>
                 </div>
             </div>
@@ -38,9 +40,6 @@
     },
     methods: {
       handleScroll () {
-        // var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
-        // console.log(scrollTop);
-        // if (scrollTop > 0) {}
         var direction = this.scrollFunc();
         if(direction && this.originalDir !== direction){
           if (direction === 'down') {

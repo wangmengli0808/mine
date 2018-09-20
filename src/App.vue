@@ -1,18 +1,45 @@
 <template>
     <div id="app">
         <keep-alive>
-            <router-view></router-view>
+            <router-view :key="key"></router-view>
         </keep-alive>
 
-        <div class="to-top" @click="toTop">
+        <div class="to-top" @click="toTop" v-if="is_show">
             <i class="icon el-icon-caret-top"></i>
+        </div>
+        <div class="menu" ref="menu">
+            <ul>
+                <li @click="$router.back(-1)">返回</li>
+                <li @click="fresh">刷新</li>
+                <li v-if="copy_content"
+                    v-clipboard:copy="copy_content"
+                    v-clipboard:success="onCopy"
+                    v-clipboard:error="onError">复制</li>
+                <li v-else class="no-drop">复制</li>
+            </ul>
         </div>
     </div>
 </template>
 
 <script>
   export default {
+    data() {
+      return {
+        is_show: false,
+        copy_content: ''
+      }
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll);
+      // 自定义右键菜单
+      window.addEventListener('contextmenu', this.showMenu);
+      window.addEventListener('click', this.click);
+    },
     methods: {
+      handleScroll() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        this.is_show = scrollTop > 150 ? true : false
+      },
       toTop() {
         let timer = null;
         timer = setInterval(function () {
@@ -23,6 +50,49 @@
             clearInterval(timer)
           }
         },30)
+      },
+      showMenu(parameter) {
+        this.copy_content = window.getSelection?window.getSelection().toString():document.selection.createRange().text;
+        // event.returnValue = false;
+        parameter.preventDefault();
+        var x = parameter.clientX;
+        var y = parameter.clientY;
+        this.$refs.menu.style.top = y + 'px';
+        this.$refs.menu.style.left = x + 'px';
+        this.$refs.menu.style.display = 'block';
+      },
+      click() {
+        this.$refs.menu.style.display = 'none';
+      },
+      fresh() {
+        window.location.reload();
+      },
+      onCopy(e) {
+        console.log('内容：' + e.text);
+      },
+      onError: function (e) {
+        console.log('无法复制文本！')
+      }
+    },
+    // 监听,当路由发生变化的时候执行
+    /*watch:{
+      $route: {
+        handler: function(val, oldVal){
+          console.log(val);
+        },
+        // 深度观察监听
+        deep: true
+      }
+    },*/
+    computed: {
+      key() {
+        if (this.$route.name === 'home-first') {
+          this.$common.setTitle('我的博客 - 首页');
+        } else if (this.$route.name === 'home-second') {
+          this.$common.setTitle('我的相册');
+        } else if (this.$route.name === 'list') {
+          this.$common.setTitle('集锦');
+        }
       }
     }
   }
@@ -63,6 +133,30 @@
             color: #c93282;
             font-size: 2rem;
             font-weight: bold;
+        }
+    }
+    .menu {
+        display: none;
+        width: 6rem;
+        line-height: 2.5rem;
+        background: #fff;
+        font-size: 1.4rem;
+        padding: 0 5px;
+        border: 1px solid #BABABA;
+        text-align: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        li {
+            color: #666;
+            cursor: pointer;
+            &:hover {
+                color: #333;
+            }
+            &.no-drop {
+                cursor: no-drop;
+            }
         }
     }
 </style>

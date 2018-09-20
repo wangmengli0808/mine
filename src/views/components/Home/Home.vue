@@ -24,7 +24,7 @@
         </div>
         <div class="home-main">
             <keep-alive>
-                <router-view></router-view>
+                <router-view v-if="isRouterAlive"></router-view>
             </keep-alive>
         </div>
     </div>
@@ -42,6 +42,7 @@
       return {
         activeName: 'first',
         color: '#C93282',
+        isRouterAlive: true,
         weekDay: null,
         date: null
       }
@@ -51,7 +52,7 @@
       let name = hash.slice(hash.lastIndexOf('-') + 1);
       let date = new Date().toDateString().split(' ');
       this.activeName = name ? name : 'first';
-      this.weekDay = date[0]
+      this.weekDay = date[0];
       this.date = date[1] + '·' + date[2] + '·'+ date[3];
     },
     methods: {
@@ -91,6 +92,15 @@
             a {
                 color: #fff;
                 text-decoration: none;
+                text-shadow: 0 0 1px #999,
+                1px 1px 2px #888,
+                2px 2px 2px #777,
+                3px 3px 2px #666,
+                4px 4px 2px #555,
+                5px 5px 2px #333;
+
+                animation: breath 4s linear infinite;
+                -webkit-animation: breath 4s linear infinite;
             }
         }
         .date {
@@ -163,5 +173,16 @@
         color: #c93282;
         font-size: 2rem;
         font-weight: bold;
+    }
+    @keyframes breath {
+        from { opacity: 0.2; }                          /* 动画开始时的不透明度 */
+        50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+        to   { opacity: 0.2; }                          /* 动画结束时的不透明度 */
+    }
+
+    @-webkit-keyframes breath {
+        from { opacity: 0.2; }                          /* 动画开始时的不透明度 */
+        50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
+        to   { opacity: 0.2; }                          /* 动画结束时的不透明度 */
     }
 </style>

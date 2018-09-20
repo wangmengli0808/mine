@@ -16,6 +16,7 @@
     "sass-loader": "^7.1.0",
     "scrollreveal": "^4.0.0",
     "vue": "^2.5.16",
+    "vue-clipboard2": "^0.2.1",
     "vue-lazyload": "^1.2.6",
     "vue-resource": "^1.5.1",
     "vue-router": "^3.0.1",

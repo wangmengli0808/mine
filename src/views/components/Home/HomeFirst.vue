@@ -12,42 +12,38 @@
                             </p>
                         </div>
                     </div>
-                    <div class="con">
+                    <!--<div class="con">
                         <h3>我的相册</h3>
                         <el-row :gutter="10" class="con-box img-list">
                             <el-col :span="8">
                                 <div class="grid-content">
-                                    <a href="javascript:;"></a>
+                                    <a href="javascript:;">
+                                        <img class="cover" src="../../../common/img/2-16.jpg" alt="">
+                                    </a>
                                 </div>
                             </el-col>
                             <el-col :span="8">
                                 <div class="grid-content">
-                                    <a href="javascript:;"></a>
+                                    <a href="javascript:;">
+                                        <img class="cover" src="../../../common/img/2-16.jpg" alt="">
+                                    </a>
                                 </div>
                             </el-col>
                             <el-col :span="8">
                                 <div class="grid-content">
-                                    <a href="javascript:;"></a>
+                                    <a href="javascript:;">
+                                        <img class="cover" src="../../../common/img/2-16.jpg" alt="">
+                                    </a>
                                 </div>
                             </el-col>
                         </el-row>
-                    </div>
+                    </div>-->
                     <div class="con">
                         <h3>文章分类</h3>
                         <el-row :gutter="10" class="con-box article-list">
-                            <el-col :span="24">
+                            <el-col :span="24" v-for="item in currentTypes" :key="item.name">
                                 <div class="grid-content" @click="toList">
-                                    <a href="javascript:;">学无止境</a>
-                                </div>
-                            </el-col>
-                            <el-col :span="24">
-                                <div class="grid-content">
-                                    <a href="javascript:;">日志</a>
-                                </div>
-                            </el-col>
-                            <el-col :span="24">
-                                <div class="grid-content">
-                                    <a href="javascript:;">美文欣赏</a>
+                                    <a href="javascript:;">{{item.title}}</a>
                                 </div>
                             </el-col>
                         </el-row>
@@ -97,6 +93,7 @@
 
 <script>
   import { mapState } from "vuex";
+  import data from "../../../common/json/home1";
 
   export default {
     name: 'home-first',
@@ -111,110 +108,27 @@
       }
     },
     mounted() {
-      this.getList()
+      this.currentTypes = [
+        {
+          "title": "学无止境",
+          "name": "article"
+        },
+        {
+          "title": "小说分享",
+          "name": "novel"
+        },
+        {
+          "title": "动漫最爱",
+          "name": "anime"
+        }
+      ];
+      this.getList();
     },
     methods: {
       getList() {
-        this.data = [
-          {
-            "id": 1,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/1-3.jpeg')
-          },
-          {
-            "id": 2,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 3,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 4,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 5,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 6,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/1-4.jpg')
-          },
-          {
-            "id": 7,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 8,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 9,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login1.jpg')
-          },
-          {
-            "id": 10,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 11,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/1-3.jpeg')
-          },
-          {
-            "id": 12,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 13,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 14,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 15,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/login2.jpg')
-          },
-          {
-            "id": 16,
-            "title": "你是什么人便会遇上什么人",
-            "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-            "src": require('../../../common/img/1-4.jpg')
-          }
-        ];
+        this.data = data;
         this.total = this.data.length;
-        this.currentChange(1)
+        this.currentChange(1);
       },
       currentChange(item) {
         this.currentData = [];
@@ -279,7 +193,7 @@
         height: 9rem;
         float: left;
         margin-right: 1rem;
-        background: url("../../../common/img/login2.jpg") no-repeat center;
+        background: url("../../../common/img/2-16.jpg") no-repeat center;
         background-size: cover;
     }
     .img-list {
@@ -291,10 +205,10 @@
             display: block;
             width: 100%;
             height: 100%;
-            background-image: url("../../../common/img/login1.jpg");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
+            img {
+                width: 100%;
+                height: 100%;
+            }
         }
     }
     .article-list {

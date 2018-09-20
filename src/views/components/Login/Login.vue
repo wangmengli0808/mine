@@ -2,7 +2,7 @@
     <div class="login text-center">
         <div class="mask"></div>
         <div class="login-box">
-            <img class="head-photo" src="../../../common/img/login1.jpg" alt="">
+            <img class="head-photo" src="../../../common/img/1-4.jpg" alt="">
             <div class="intro">
                 <span class="text">May I introduce myself?</span>
             </div>
