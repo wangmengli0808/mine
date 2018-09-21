@@ -195,7 +195,6 @@
       showDialog(item) {
         this.dialogVisible = true;
         this.dialogMsg = item;
-        console.log(item);
       }
     },
     computed: {

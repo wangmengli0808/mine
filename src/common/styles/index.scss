@@ -22,7 +22,7 @@
 $colorpurple: #C93282;
 html { font-size: 62.5% !important; }
 html, body { height: 100%;position: relative; }
-body { font-family: 'Microsoft YaHei', Arial, 'Times New Roman', SimHei;color: #333;background: url('common/img/topbg.jpg') no-repeat right top #D6E0E1;background-attachment: fixed;margin: 0;padding: 0; }
+body { font-family: 'Microsoft YaHei', Arial, 'Times New Roman', SimHei;color: #333;/*background: url('common/img/topbg.jpg') no-repeat right top #D6E0E1;background-attachment: fixed;*/margin: 0;padding: 0; }
 * { color: #333;margin: 0;padding: 0;list-style: none;text-decoration: none; }
 .text-right { text-align: right; }
 .text-left { text-align: left; }
@@ -71,5 +71,76 @@ body { font-family: 'Microsoft YaHei', Arial, 'Times New Roman', SimHei;color: #
       -o-transform: scale(1.05);
       transform: scale(1.05);
     }
+  }
+}
+
+.main {
+  &-right {
+    padding: 3rem;
+    background: #eaeaea;
+    .article {
+      &-box {
+        background: #fff;
+        margin-bottom: 3rem;
+      }
+      &-title {
+        color: #666;
+        font-size: 2.6rem;
+        font-weight: normal;
+        padding: 3rem 2.5rem 3rem 6%;
+        border-left: 5px solid #4d4d4d;
+      }
+      &-inner {
+        line-height: 2.8rem;
+        font-size: 1.4rem;
+        padding: 0 6%;
+        .cover-img img {
+          max-width: 100%;
+        }
+        h3 {
+          color: #574c4c;
+          font-size: 1.8rem;
+          margin: 3rem 0;
+          padding-bottom: 5px;
+          border-bottom: 1px solid #ddd;
+        }
+        p {
+          margin-bottom: 1.5rem;
+        }
+      }
+      &-other {
+        display: flex;
+        padding: 2rem 0;
+        margin-top: 3rem;
+        border-top: 1px solid #ddd;
+        .left {
+          flex: 1;
+        }
+        .right {
+          a {
+            color: #fff;
+            background: #4d4d4d;
+            font-size: 12px;
+            padding: 5px 8px;
+            line-height: 1.8rem;
+            border-radius: 2px;
+            transition: background .3s;
+            &:hover {
+              background: #3c3c3c;
+            }
+          }
+        }
+      }
+    }
+  }
+  .el-pagination.is-background .el-pager li:not(.disabled).active {
+    background-color: #4d4d4d;
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .el-pagination.is-background .el-pager li:not(.disabled):hover {
+    color: #4d4d4d;
   }
 }
