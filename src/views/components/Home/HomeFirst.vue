@@ -57,20 +57,21 @@
                             <el-col :xs="24" class="hidden-sm-and-up">
                                 <div class="grid-content">
                                     <div class="img-rt">
-                                        <div class="img" :style="{backgroundImage:'url(' + item.src + ')'}"></div>
+                                        <div class="img" :style="{backgroundImage:'url(' + item.cover_src + ')'}"></div>
                                     </div>
                                 </div>
                             </el-col>
                             <el-col :xs="24" :sm="18">
                                 <div class="grid-content">
-                                    <h3 class="item-title">{{item.title}}</h3>
-                                    <p class="item-desc overflow" style="-webkit-box-orient: vertical;">{{item.desc}}</p>
+                                    <h3 class="item-title" @click="showDialog(item)">{{item.title}}</h3>
+                                    <p class="item-desc overflow" style="-webkit-box-orient: vertical;">
+                                        {{item.desc}}</p>
                                 </div>
                             </el-col>
                             <el-col :xs="24" :sm="6" class="hidden-xs-only">
                                 <div class="grid-content">
                                     <div class="img-rt">
-                                        <div class="img" :style="{backgroundImage:'url(' + item.src + ')'}"></div>
+                                        <div class="img" :style="{backgroundImage:'url(' + item.cover_src + ')'}"></div>
                                     </div>
                                 </div>
                             </el-col>
@@ -88,23 +89,42 @@
                 </div>
             </el-col>
         </el-row>
+
+        <el-dialog class="dialog-box"
+                title=""
+                :visible.sync="dialogVisible"
+                width="40%"
+                :before-close="handleClose">
+            <div>
+                <h3 class="title">{{dialogMsg.title}}</h3>
+                <p class="content">{{dialogMsg.desc}}</p>
+                <el-carousel :interval="2000" type="card" height="200px">
+                    <el-carousel-item v-for="item in dialogMsg.imgs" :key="item">
+                        <img style="width: 100%;height: 100%;object-fit: cover;" :src="item" alt="">
+                    </el-carousel-item>
+                </el-carousel>
+            </div>
+        </el-dialog>
     </div>
 </template>
 
 <script>
-  import { mapState } from "vuex";
+  import {mapState} from "vuex";
   import data from "../../../common/json/home1";
 
   export default {
     name: 'home-first',
-    data () {
+    data() {
       return {
         page_size: 6,
         total: 0,
+        dialogVisible: false,
+        dialogMsg: {},
         data: [],
         articles: [],
         currentData: [],
-        currentTypes: []
+        currentTypes: [],
+        carousels: []
       }
     },
     mounted() {
@@ -120,6 +140,20 @@
         {
           "title": "动漫最爱",
           "name": "anime"
+        }
+      ];
+      this.carousels = [
+        {
+          "src": "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-1.jpg"
+        },
+        {
+          "src": "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-2.jpg"
+        },
+        {
+          "src": "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-3.jpg"
+        },
+        {
+          "src": "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-4.jpg"
         }
       ];
       this.getList();
@@ -148,12 +182,20 @@
           if (osTop === 0) {
             clearInterval(timer)
           }
-        },30)
+        }, 30)
       },
       toList() {
         this.$router.push({
           path: '/list'
         })
+      },
+      handleClose(done) {
+        done();
+      },
+      showDialog(item) {
+        this.dialogVisible = true;
+        this.dialogMsg = item;
+        console.log(item);
       }
     },
     computed: {
@@ -172,7 +214,7 @@
 
 <style lang="scss">
     .con {
-        background: rgba(255,255,255,0.5);
+        background: rgba(255, 255, 255, 0.5);
         margin-bottom: 2rem;
         overflow: hidden;
         h3 {
@@ -188,6 +230,7 @@
             font-size: 1.4rem;
         }
     }
+
     .img-item {
         width: 12rem;
         height: 9rem;
@@ -196,6 +239,7 @@
         background: url("../../../common/img/2-16.jpg") no-repeat center;
         background-size: cover;
     }
+
     .img-list {
         .grid-content {
             height: 8rem;
@@ -211,6 +255,7 @@
             }
         }
     }
+
     .article-list {
         line-height: 2.6rem;
         padding-left: 1rem;
@@ -224,6 +269,7 @@
             }
         }
     }
+
     .box-right {
         .item {
             background: rgba(255, 255, 255, 0.8);
@@ -258,15 +304,18 @@
             }
         }
     }
+
     .el-pagination.is-background .el-pager li:not(.disabled).active {
         background-color: #C93282;
         &:hover {
             color: #fff;
         }
     }
+
     .el-pagination.is-background .el-pager li:not(.disabled):hover {
         color: #C93282;
     }
+
     @media only screen and (max-width: 768px) {
         .box-right {
             .img-rt {
@@ -274,5 +323,33 @@
                 margin-bottom: 2rem;
             }
         }
+    }
+
+    .dialog-box {
+        .el-dialog__body {
+            padding: 2rem;
+        }
+        .content {
+            line-height: 26px;
+            color: #666;
+            margin: 1rem 0 2rem;
+        }
+    }
+    .imgs {
+        /*display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-right: -1.5rem;
+        &-item {
+            width: 19.5rem;
+            overflow: hidden;
+            padding: 0 1.5rem 1.5rem 0;
+            box-sizing: border-box;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }*/
     }
 </style>

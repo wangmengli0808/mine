@@ -31,13 +31,8 @@
                 <el-col :sm="8" class="hidden-xs-only">
                     <div class="grid-content list-right">
                         <div class="con">
-                            <div class="search">
-                                <el-input
-                                        placeholder="请输入内容"
-                                        suffix-icon="el-icon-search"
-                                        v-model="input">
-                                </el-input>
-                            </div>
+                            <calendar @click-event="getDate"
+                                      :start-date="new Date(2015,7)"></calendar>
                         </div>
                     </div>
                 </el-col>
@@ -48,10 +43,12 @@
 
 <script>
   import HeaderNav from '../common/Header';
+  import Calendar from '../common/Calendar';
 
   export default {
     components: {
-      HeaderNav
+      HeaderNav,
+      Calendar
     },
     data() {
       return {
@@ -101,7 +98,9 @@
       }
     },
     methods: {
-
+      getDate(param) {
+        console.log(param);
+      }
     }
   }
 </script>

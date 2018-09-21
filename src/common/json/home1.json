@@ -1,20 +1,33 @@
 [
   {
     "id": 1,
-    "title": "你是什么人便会遇上什么人",
-    "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-    "src": "http://pfakcwsi5.bkt.clouddn.com/2-16.jpg"
+    "title": "不要假装努力，结局不会陪你演戏",
+    "desc": "【不要假装努力，结局不会陪你演戏】说要健身，只是到健身房晒了几张自拍；说好读书，只是去图书馆刷手机。骗别人容易骗自己更容易，但要骗这个世界很难。时间很公平，你把它花在哪里，它就在哪里结果。踏踏实实走好每一步，哪怕速度慢一点，生活也会给你一个满意的结局。",
+    "cover_src": "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-1.jpg",
+    "imgs": [
+      "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-1.jpg",
+      "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-2.jpg",
+      "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-3.jpg",
+      "http://pfakcwsi5.bkt.clouddn.com/image/jpg/img-4.jpg"
+    ]
   },
   {
     "id": 2,
     "title": "你是什么人便会遇上什么人",
     "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-    "src": "http://pfakcwsi5.bkt.clouddn.com/1-4.jpg"
+    "cover_src": "http://pfakcwsi5.bkt.clouddn.com/1-4.jpg",
+    "imgs": [
+      "http://pfakcwsi5.bkt.clouddn.com/1-4.jpg"
+    ]
   },
   {
     "id": 3,
     "title": "你是什么人便会遇上什么人",
     "desc": "有时就为了一句狠话，像心头一口毒钉，永远麻痺着亲密感情交流。恶言，真要慎出，平日多誠心爱语，乃最简易之佈施。",
-    "src": "http://pfakcwsi5.bkt.clouddn.com/2-16.jpg"
+    "cover_src": "http://pfakcwsi5.bkt.clouddn.com/2-16.jpg",
+    "imgs": [
+      "http://pfakcwsi5.bkt.clouddn.com/2-16.jpg",
+      "http://pfakcwsi5.bkt.clouddn.com/1-4.jpg"
+    ]
   }
 ]

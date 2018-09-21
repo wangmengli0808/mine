@@ -46,6 +46,10 @@
                                 </el-input>
                             </div>
                         </div>
+                        <div class="con">
+                            <calendar @click-event="getDate"
+                                      :start-date="new Date(2015,7)"></calendar>
+                        </div>
                     </div>
                 </el-col>
             </el-row>
@@ -55,10 +59,12 @@
 
 <script>
   import HeaderNav from '../common/Header';
+  import Calendar from '../common/Calendar';
 
   export default {
     components: {
-      HeaderNav
+      HeaderNav,
+      Calendar
     },
     data() {
       return {
@@ -69,15 +75,12 @@
 
     },
     methods: {
-      open() {
-        this.$alert('这是一段内容', '标题名称', {
-          confirmButtonText: '确定',
-          callback: action => {
-            this.$message({
-              type: 'info',
-              message: `action: ${ action }`
-            });
-          }
+      getDate(param) {
+        console.log(param);
+
+        this.$notify({
+          title: '你选择的日期是',
+          message: param.year + '-' + param.month + '-' + param.day
         });
       }
     }
