@@ -39,10 +39,24 @@
                                 inactive-text="tags">
                         </el-switch>
                     </div>
-                    <div class="tags">
-                        <el-tag size="small" type="">小型标签</el-tag>
-                        <el-tag size="small" type="success">小型标签</el-tag>
-                        <el-tag size="small" type="info">小型标签</el-tag>
+                    <div class="tags" v-if="is_switch">
+                        <el-tag size="small" type="">杂谈</el-tag>
+                        <el-tag size="small" type="success">js</el-tag>
+                        <el-tag size="small" type="info">html</el-tag>
+                        <el-tag size="small" type="success">js</el-tag>
+                        <el-tag size="small" type="info">html</el-tag>
+                        <el-tag size="small" type="info">css</el-tag>
+                        <el-tag size="small" type="info">故事</el-tag>
+                    </div>
+                    <div class="logs">
+                        <ul>
+                            <li>
+                                <a href="javascript:;">
+                                    <h2>好</h2>
+                                    <span>2018-01-12</span><span>#游记</span>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                 </el-aside>
             </div>
@@ -103,7 +117,7 @@
         .el-aside {
             /*background: linear-gradient(#B0CDCF, #D9C593);*/
             background: #fff;
-            padding: 2rem;
+            padding: 1rem;
         }
         .el-input__inner {
             border: 0;
@@ -114,9 +128,21 @@
             margin: 1.5rem 0;
         }
         .tags {
+            background: rgba(225, 225, 225, .3);
+            padding: 15px 15px 7px;
             .el-tag {
+                padding: 0 1rem;
                 margin-right: 5px;
+                margin-bottom: 8px;
+                border-radius: 1rem 0;
+                cursor: pointer;
+                &:hover {
+                    opacity: .8;
+                }
             }
+        }
+        .el-switch__label {
+            color: #666;
         }
     }
 
@@ -140,7 +166,7 @@
         .author {
             font-size: 3rem;
             font-family: 'Times New Roman';
-            margin: 0.6rem;
+            margin: 2rem 0;
 
             text-shadow: 0 0 1px #999,
             1px 1px 2px #888,
