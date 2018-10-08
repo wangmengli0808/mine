@@ -174,15 +174,4 @@
         font-size: 2rem;
         font-weight: bold;
     }
-    @keyframes breath {
-        from { opacity: 0.2; }                          /* 动画开始时的不透明度 */
-        50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
-        to   { opacity: 0.2; }                          /* 动画结束时的不透明度 */
-    }
-
-    @-webkit-keyframes breath {
-        from { opacity: 0.2; }                          /* 动画开始时的不透明度 */
-        50%  { opacity:   1; }                          /* 动画50% 时的不透明度 */
-        to   { opacity: 0.2; }                          /* 动画结束时的不透明度 */
-    }
 </style>

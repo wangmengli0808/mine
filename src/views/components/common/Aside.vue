@@ -1,6 +1,6 @@
 <template>
     <div>
-        <el-aside width="30rem">
+        <el-aside width="25rem">
             <div class="overlay"></div>
             <div class="main-left">
                 <div class="profile">
@@ -13,7 +13,7 @@
                 <div class="nav-menu">
                     <ul>
                         <li>
-                            <router-link to="/index"><a href="javascript:;">主页</a></router-link>
+                            <router-link to="/"><a href="javascript:;">主页</a></router-link>
                         </li>
                         <li>
                             <router-link to="/photos"><a href="javascript:;">相册</a></router-link>
@@ -21,12 +21,20 @@
                     </ul>
                 </div>
                 <div class="nav-crumb">
-                    <a href="javascript:;" @click="all">所有文章</a> / <a href="javascript:;">关于我</a>
+                    <a href="javascript:;" @click="all">所有文章</a>
+                    <!--/ -->
+                    <!--<a href="javascript:;">关于我</a>-->
+                </div>
+                <div class="nav-others">
+                    <i class="fa fa-qq"></i>
+                    <i class="fa fa-weibo"></i>
+                    <i class="fa fa-github"></i>
                 </div>
             </div>
         </el-aside>
         <transition name="slide-fade">
             <div class="aside-fade" v-show="show">
+                <div class="mask" @click="show = !show"></div>
                 <el-aside width="30rem">
                     <el-input
                             placeholder="请输入内容"
@@ -53,7 +61,13 @@
                             <li>
                                 <a href="javascript:;">
                                     <h2>好</h2>
-                                    <span>2018-01-12</span><span>#游记</span>
+                                    <div><i class="el-input__icon el-icon-date"></i><span>2018-01-12</span><span>#游记</span></div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:;">
+                                    <h2>好</h2>
+                                    <div><span>2018-01-12</span><span>#游记</span></div>
                                 </a>
                             </li>
                         </ul>
@@ -78,7 +92,7 @@
     },
     methods: {
       all() {
-        this.show = !this.show;
+        this.show = true;
       }
     }
   }
@@ -97,7 +111,7 @@
     }
 
     .overlay {
-        height: 18rem;
+        height: 15rem;
         background: #4d4d4d;
     }
 
@@ -107,17 +121,28 @@
     }
 
     .aside-fade {
-        background: rgba(0,0,0,.3);
         position: absolute;
         top: 0;
         bottom: 0;
-        left: 30rem;
+        left: 25rem;
         right: 0;
-        z-index: 99;
+        z-index: 9;
+        .mask {
+            background: rgba(0,0,0,.3);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 98;
+        }
         .el-aside {
-            /*background: linear-gradient(#B0CDCF, #D9C593);*/
+            /*background: linear-gradient(#a2cf11, #f9ae1b);*/
+            overflow: auto;
             background: #fff;
             padding: 1rem;
+            position: relative;
+            z-index: 99;
         }
         .el-input__inner {
             border: 0;
@@ -127,34 +152,45 @@
         .switch {
             margin: 1.5rem 0;
         }
-        .tags {
-            background: rgba(225, 225, 225, .3);
-            padding: 15px 15px 7px;
-            .el-tag {
-                padding: 0 1rem;
-                margin-right: 5px;
-                margin-bottom: 8px;
-                border-radius: 1rem 0;
-                cursor: pointer;
-                &:hover {
-                    opacity: .8;
-                }
-            }
-        }
         .el-switch__label {
             color: #666;
+        }
+        .logs {
+            margin: 1rem -1rem;
+            li {
+                border-bottom: 1px solid #eee;
+                a {
+                    display: block;
+                    padding: 1rem 1.5rem;
+                }
+                &:hover {
+                    .el-input__icon, h2, span {
+                        color: #409EFF;
+                    }
+                }
+                span {
+                    color: #888;
+                    margin-right: 10px;
+                }
+                .el-input__icon {
+                    width: 16px;
+                    line-height: inherit;
+                    color: #888;
+                    text-align: left;
+                }
+            }
         }
     }
 
     .main-left {
-        margin-top: -6.5rem;
         text-align: center;
         .profile {
-            width: 13rem;
-            height: 13rem;
+            width: 10rem;
+            height: 10rem;
             background: #fff;
             padding: 5px;
             margin: auto;
+            margin-top: -5rem;
             border-radius: 100%;
             overflow: hidden;
             img {
@@ -177,6 +213,7 @@
 
             animation: breath 4s linear infinite;
             -webkit-animation: breath 4s linear infinite;
+            -o-animation: breath 4s linear infinite;
         }
         .sub {
             color: #999;
@@ -198,6 +235,19 @@
             font-size: 1.2rem;
             a {
                 color: #666;
+            }
+        }
+    }
+    .nav-others {
+        margin-top: 2rem;
+        .fa {
+            color: #666;
+            font-size: 1.7rem;
+            margin: 0 3px;
+            &.fa-qq {
+                font-size: 1.5rem;
+                position: relative;
+                top: -2px;
             }
         }
     }

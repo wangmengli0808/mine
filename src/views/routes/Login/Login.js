@@ -1,7 +1,7 @@
 import Login from '../../components/Login/Login.vue'
 
 export default [{
-  path: '/',
+  path: '/login',
   name: 'login',
   component: Login
 }]

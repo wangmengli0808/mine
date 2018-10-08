@@ -1,7 +1,7 @@
 <template>
     <div class="main" style="height: 100%;">
         <el-container style="height: 100%;">
-            <blog-aside class="hidden-xs-only"></blog-aside>
+            <blog-aside class="hidden-sm-and-down"></blog-aside>
             <el-main class="main-right">
                 <article class="article">
                     <div class="article-box">
@@ -16,7 +16,9 @@
                             <div class="article-other">
                                 <div class="left"></div>
                                 <div class="right">
-                                    <a href="javascript:;" class="article-more">阅读全文 &gt;&gt;</a>
+                                    <router-link to="/detail">
+                                        <a href="javascript:;" class="article-more">阅读全文 &gt;&gt;</a>
+                                    </router-link>
                                 </div>
                             </div>
                         </div>
@@ -65,8 +67,8 @@
         total: 20
       }
     },
-    mounted() {
-
+    activated() {
+      this.$common.setTitle('主页');
     },
     methods: {
       currentChange() {

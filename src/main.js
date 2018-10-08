@@ -3,6 +3,9 @@ import Vuex from 'vuex'
 import VueClipboard from 'vue-clipboard2'
 // import axios from 'axios'
 import store from './views/store/store'
+import 'viewerjs/dist/viewer.css'
+import 'font-awesome/css/font-awesome.css'
+import Viewer from 'v-viewer'
 import common from './common'
 import $ from 'jquery';
 import ElementUI from 'element-ui'
@@ -18,6 +21,7 @@ Vue.use(Vuex);
 Vue.use(VueClipboard);
 Vue.use(ElementUI);
 Vue.use(VueResource);
+Vue.use(Viewer);
 
 // 配置 axios
 // Vue.prototype.$http = axios;
